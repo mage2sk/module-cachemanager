@@ -9,7 +9,6 @@
 
 # Panth Cache Manager for Magento 2 — Smart Cache Invalidation & Automated Warmup with Concurrent Requests
 
-[![Visitors](https://visitor-badge.laobi.icu/badge?page_id=mage2sk.module-cachemanager&left_color=gray&right_color=0d9488&left_text=Visitors)](https://github.com/mage2sk/module-cachemanager)
 [![Magento 2.4.6 - 2.4.8](https://img.shields.io/badge/Magento-2.4.6%20--%202.4.8-orange?logo=magento&logoColor=white)](https://magento.com)
 [![PHP 8.1 - 8.4](https://img.shields.io/badge/PHP-8.1%20--%208.4-blue?logo=php&logoColor=white)](https://php.net)
 [![License Proprietary](https://img.shields.io/badge/License-Proprietary-blue)]()
