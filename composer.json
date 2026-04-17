@@ -2,7 +2,7 @@
     "name": "mage2kishan/module-cachemanager",
     "description": "Smart cache invalidation on entity save and automated cache warmup with concurrent requests",
     "type": "magento2-module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "proprietary",
     "authors": [
         {
