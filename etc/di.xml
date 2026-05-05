@@ -8,4 +8,11 @@
             </argument>
         </arguments>
     </type>
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="panth_cachemanager_warmup" xsi:type="object">Panth\CacheManager\Console\Command\WarmupCommand</item>
+            </argument>
+        </arguments>
+    </type>
 </config>

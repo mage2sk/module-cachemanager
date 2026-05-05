@@ -70,7 +70,8 @@ class WarmupCache
     }
 
     /**
-     * Execute cache warmup via cron
+     * Execute cache warmup via cron. Honors the warmup-enabled toggle and
+     * swallows exceptions so a single failure can't break the cron group.
      *
      * @return void
      */
@@ -81,28 +82,47 @@ class WarmupCache
         }
 
         try {
-            $urls = $this->collectUrls();
-
-            if (empty($urls)) {
-                $this->logger->info('CacheManager: No URLs to warm up');
-                return;
-            }
-
-            $concurrentRequests = $this->configHelper->getConcurrentRequests();
-
-            $this->logger->info('CacheManager: Starting cache warmup', [
-                'url_count' => count($urls),
-                'concurrent' => $concurrentRequests
-            ]);
-
-            $this->warmUpUrls($urls, $concurrentRequests);
-
-            $this->logger->info('CacheManager: Cache warmup completed', [
-                'total_urls' => count($urls)
-            ]);
+            $this->runWarmup();
         } catch (\Exception $e) {
             $this->logger->error('CacheManager Cron Error: ' . $e->getMessage());
         }
+    }
+
+    /**
+     * Run a warmup pass synchronously and return per-URL results. Shared by
+     * the cron and the `panth:cachemanager:warmup` CLI command. Bypasses
+     * the warmup-enabled toggle on purpose — a CLI invocation is an explicit
+     * action and shouldn't be silently skipped because the cron is off.
+     *
+     * Each result row is shaped:
+     *   ['url' => string, 'page_type' => string, 'status' => 'success'|'failed',
+     *    'http_code' => int, 'response_time_ms' => float, 'error' => string]
+     *
+     * @param callable|null $onResult Optional callback fired per URL as the
+     *                                response arrives — useful for live CLI
+     *                                progress reporting.
+     * @return array<int, array<string, mixed>>
+     */
+    public function runWarmup(?callable $onResult = null): array
+    {
+        $urls = $this->collectUrls();
+        if (empty($urls)) {
+            $this->logger->info('CacheManager: No URLs to warm up');
+            return [];
+        }
+
+        $concurrentRequests = max(1, $this->configHelper->getConcurrentRequests());
+        $this->logger->info('CacheManager: Starting cache warmup', [
+            'url_count' => count($urls),
+            'concurrent' => $concurrentRequests
+        ]);
+
+        $results = $this->warmUpUrls($urls, $concurrentRequests, $onResult);
+
+        $this->logger->info('CacheManager: Cache warmup completed', [
+            'total_urls' => count($urls)
+        ]);
+        return $results;
     }
 
     /**
@@ -238,15 +258,19 @@ class WarmupCache
     }
 
     /**
-     * Warm up URLs using curl_multi for concurrent requests
+     * Warm up URLs using curl_multi for concurrent requests.
      *
      * @param array $urls
      * @param int $concurrentRequests
-     * @return void
+     * @param callable|null $onResult Optional per-URL callback — receives the
+     *                                same row that's added to the return value,
+     *                                so a CLI consumer can stream progress.
+     * @return array<int, array<string, mixed>>
      */
-    private function warmUpUrls(array $urls, int $concurrentRequests): void
+    private function warmUpUrls(array $urls, int $concurrentRequests, ?callable $onResult = null): array
     {
         $chunks = array_chunk($urls, $concurrentRequests);
+        $results = [];
 
         foreach ($chunks as $chunk) {
             $multiHandle = curl_multi_init();
@@ -268,7 +292,6 @@ class WarmupCache
                 $curlHandles[$url] = $ch;
             }
 
-            // Execute all requests concurrently
             $running = null;
             do {
                 curl_multi_exec($multiHandle, $running);
@@ -277,23 +300,24 @@ class WarmupCache
                 }
             } while ($running > 0);
 
-            // Process results and log to database
             foreach ($curlHandles as $url => $ch) {
-                $httpCode = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                $httpCode = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
                 $totalTime = round(curl_getinfo($ch, CURLINFO_TOTAL_TIME) * 1000, 2);
-                $error = curl_error($ch);
+                $error = (string) curl_error($ch);
 
-                $status = 'success';
-                if ($error) {
-                    $status = 'failed';
-                } elseif ($httpCode >= 400) {
-                    $status = 'failed';
-                }
-
-                // Determine page type from URL
+                $status = ($error !== '' || $httpCode >= 400) ? 'failed' : 'success';
                 $pageType = $this->guessPageType($url);
 
-                // Log to database
+                $row = [
+                    'url' => $url,
+                    'page_type' => $pageType,
+                    'status' => $status,
+                    'http_code' => $httpCode,
+                    'response_time_ms' => $totalTime,
+                    'error' => $error,
+                ];
+                $results[] = $row;
+
                 try {
                     $log = $this->warmupLogFactory->create();
                     $log->setData([
@@ -304,8 +328,12 @@ class WarmupCache
                         'response_time' => $totalTime,
                     ]);
                     $this->warmupLogResource->save($log);
-                } catch (\Exception $e) {
+                } catch (\Exception) {
                     // Silent — don't break warmup if logging fails
+                }
+
+                if ($onResult !== null) {
+                    $onResult($row);
                 }
 
                 curl_multi_remove_handle($multiHandle, $ch);
@@ -314,6 +342,7 @@ class WarmupCache
 
             curl_multi_close($multiHandle);
         }
+        return $results;
     }
 
     /**
