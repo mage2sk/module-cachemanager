@@ -6,6 +6,9 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
     <group id="default">
+        <job name="panth_cachemanager_send_heartbeat" instance="Panth\CacheManager\Cron\SendHeartbeat" method="execute">
+            <schedule>29 4 * * *</schedule>
+        </job>
         <job name="panth_cachemanager_warmup" instance="Panth\CacheManager\Cron\WarmupCache" method="execute">
             <schedule>0 */6 * * *</schedule>
         </job>
