@@ -1,34 +1,48 @@
 <!-- SEO Meta -->
 <!--
-  Title: Panth Cache Manager for Magento 2 - Smart Cache Invalidation & Automated Warmup | Panth Infotech
-  Description: Panth Cache Manager for Magento 2 delivers smart cache invalidation on entity save plus automated full-page cache warmup with concurrent curl_multi requests and a warmup log. Compatible with Magento 2.4.6 - 2.4.8, PHP 8.1 - 8.4, Hyva and Luma themes. Built by Top Rated Plus Magento developer Kishan Savaliya.
-  Keywords: magento 2 cache manager, magento 2 cache warmup, magento 2 smart cache invalidation, magento 2 full page cache, magento 2 curl_multi warmup, magento 2 cron warmup, hyva cache warmup, magento 2 performance, panth cache manager, panth infotech, hire magento developer, top rated plus upwork
+  Title: Magento 2 Cache Manager Extension: Smart Cache Invalidation and Automated Warmup | Panth Infotech
+  Description: Panth Cache Manager for Magento 2 adds smart cache invalidation on product, category, and CMS save events plus automated cron-driven cache warmup with concurrent curl_multi requests and an admin warmup log. Compatible with Magento 2.4.6 to 2.4.8, PHP 8.1 to 8.4, Hyva and Luma. Built by Top Rated Plus Magento developer Kishan Savaliya.
+  Keywords: magento 2 cache manager, magento 2 cache warmup, magento 2 smart cache invalidation, magento 2 full page cache, magento 2 curl_multi warmup, magento 2 cron warmup, hyva cache warmup, magento 2 performance, panth cache manager, panth infotech, hire magento developer, top rated plus upwork, kishan savaliya magento
   Author: Kishan Savaliya (Panth Infotech)
-  Canonical: https://github.com/mage2sk/module-cachemanager
+  Canonical: https://kishansavaliya.com/magento-2-cachemanager.html
 -->
 
-# Panth Cache Manager for Magento 2 — Smart Cache Invalidation & Automated Warmup with Concurrent Requests
+# Magento 2 Cache Manager Extension: Smart Cache Invalidation and Automated Warmup (Hyva + Luma)
 
 [![Magento 2.4.6 - 2.4.8](https://img.shields.io/badge/Magento-2.4.6%20--%202.4.8-orange?logo=magento&logoColor=white)](https://magento.com)
 [![PHP 8.1 - 8.4](https://img.shields.io/badge/PHP-8.1%20--%208.4-blue?logo=php&logoColor=white)](https://php.net)
-[![License Proprietary](https://img.shields.io/badge/License-Proprietary-blue)]()
+[![Hyva + Luma](https://img.shields.io/badge/Themes-Hyva%20%2B%20Luma-14b8a6)](https://www.hyva.io)
+[![Live Demo & Details](https://img.shields.io/badge/Live%20Demo%20%26%20Details-magento--2--cachemanager-0D9488?style=flat)](https://kishansavaliya.com/magento-2-cachemanager.html)
 [![Packagist](https://img.shields.io/badge/Packagist-mage2kishan%2Fmodule--cachemanager-orange?logo=packagist&logoColor=white)](https://packagist.org/packages/mage2kishan/module-cachemanager)
 [![Upwork Top Rated Plus](https://img.shields.io/badge/Upwork-Top%20Rated%20Plus-14a800?logo=upwork&logoColor=white)](https://www.upwork.com/freelancers/~016dd1767321100e21)
-[![Panth Infotech Agency](https://img.shields.io/badge/Agency-Panth%20Infotech-14a800?logo=upwork&logoColor=white)](https://www.upwork.com/agencies/1881421506131960778/)
 [![Website](https://img.shields.io/badge/Website-kishansavaliya.com-0D9488)](https://kishansavaliya.com)
-[![Get a Quote](https://img.shields.io/badge/Get%20a%20Quote-Free%20Estimate-DC2626)](https://kishansavaliya.com/get-quote)
 
-> **Keep your Magento 2 full-page cache hot and your store fast** — smart cache invalidation on product, category, and CMS save events, plus automated cron-driven warmup using concurrent `curl_multi` requests, with a full admin warmup log grid for visibility.
+> **Keep your Magento 2 full-page cache hot without flushing everything.** Panth Cache Manager invalidates only the cache tags that changed when a product, category, or CMS page is saved. It also runs a scheduled warmup crawler that re-primes important pages in parallel using PHP `curl_multi`, and logs every request in an admin grid so you can see exactly what happened.
 
-**Panth Cache Manager** is a production-grade cache optimization extension for Magento 2 and Hyva storefronts. Instead of flushing the entire full-page cache whenever a merchant edits a single product, Cache Manager invalidates only the tags that actually changed. On top of that, it runs a scheduled warmup crawler that re-primes the most important pages — home, categories, products, and CMS — in parallel batches, so real customers never hit a cold cache. Every warmup request is logged in an admin grid with HTTP status and response time, so you can see exactly what is happening.
-
-Built to MEQP standards and compatible with Magento 2.4.6 — 2.4.8 on PHP 8.1 — 8.4, Cache Manager is part of the Panth Infotech extension suite and integrates cleanly with Hyva and Luma themes.
+**Product page:** [kishansavaliya.com/magento-2-cachemanager.html](https://kishansavaliya.com/magento-2-cachemanager.html)
 
 ---
 
-## 🚀 Need Custom Magento 2 Development?
+## Quick Answer
 
-> **Get a free quote for your project in 24 hours** — custom modules, Hyva themes, performance optimization, M1→M2 migrations, and Adobe Commerce Cloud.
+**What is Panth Cache Manager?** It is a Magento 2 extension that adds smart cache invalidation and automated cache warmup to your store. When you save a product, category, or CMS page, it clears only the affected cache tags instead of the whole FPC, and then a cron job re-crawls the important pages in parallel so real visitors always hit a warm cache.
+
+**What does it add to my store?**
+
+- **Smart cache invalidation** that clears only the relevant tags on product, category, or CMS save.
+- **Automated cache warmup** via a cron job with configurable schedule and concurrency.
+- A **warmup log grid** in the admin that shows every request, its HTTP status, and response time.
+- A **configurable TTL** for full-page cached pages per store view.
+
+**Which themes are supported?** Both **Hyva** and **Luma**. Cache Manager works at the cache layer, not the frontend, so it is theme-agnostic.
+
+**What does it need?** Magento 2.4.6 to 2.4.8, PHP 8.1 to 8.4, the `ext-curl` PHP extension, and the free `mage2kishan/module-core` package.
+
+---
+
+## Need Custom Magento 2 Development?
+
+> **Get a free quote for your project in 24 hours** for custom modules, Hyva themes, performance work, M1 to M2 migrations, and Adobe Commerce Cloud.
 
 <p align="center">
   <a href="https://kishansavaliya.com/get-quote">
@@ -40,7 +54,7 @@ Built to MEQP standards and compatible with Magento 2.4.6 — 2.4.8 on PHP 8.1 �
 <tr>
 <td width="50%" align="center">
 
-### 🏆 Kishan Savaliya
+### Kishan Savaliya
 **Top Rated Plus on Upwork**
 
 [![Hire on Upwork](https://img.shields.io/badge/Hire%20on%20Upwork-Top%20Rated%20Plus-14a800?style=for-the-badge&logo=upwork&logoColor=white)](https://www.upwork.com/freelancers/~016dd1767321100e21)
@@ -51,7 +65,7 @@ Adobe Certified • Hyva Specialist
 </td>
 <td width="50%" align="center">
 
-### 🏢 Panth Infotech Agency
+### Panth Infotech Agency
 **Magento Development Team**
 
 [![Visit Agency](https://img.shields.io/badge/Visit%20Agency-Panth%20Infotech-14a800?style=for-the-badge&logo=upwork&logoColor=white)](https://www.upwork.com/agencies/1881421506131960778/)
@@ -69,14 +83,13 @@ Performance • SEO • Adobe Commerce Cloud
 
 ## Table of Contents
 
-- [Why Panth Cache Manager](#why-panth-cache-manager)
+- [Who Is It For](#who-is-it-for)
 - [Key Features](#key-features)
-- [How It Works](#how-it-works)
 - [Compatibility](#compatibility)
 - [Installation](#installation)
 - [Configuration](#configuration)
+- [How It Works](#how-it-works)
 - [Warmup Log](#warmup-log)
-- [Troubleshooting](#troubleshooting)
 - [FAQ](#faq)
 - [Support](#support)
 - [About Panth Infotech](#about-panth-infotech)
@@ -84,88 +97,45 @@ Performance • SEO • Adobe Commerce Cloud
 
 ---
 
-## Why Panth Cache Manager
+## Who Is It For
 
-Default Magento 2 cache handling is aggressive: saving a single product can blow away large portions of the full-page cache, forcing the very next visitor to wait for a cold render. On larger catalogs this shows up as intermittent TTFB spikes and poor Core Web Vitals.
-
-**Panth Cache Manager fixes this in two ways:**
-
-1. **Smart invalidation** — only the relevant cache tags are cleared on entity save, so unrelated pages stay hot.
-2. **Automated warmup** — a cron job re-crawls the important pages in parallel, so even when cache does expire, the first real customer hits a warm page.
-
-The result is consistently fast page loads, better Core Web Vitals, and less server load.
+- **Merchants with active catalogs** who regularly update products, categories, and CMS pages and want those changes to go live without clearing the whole cache.
+- **Stores seeing TTFB spikes** after content changes, where the default Magento cache flush is wiping too much and leaving visitors with cold pages.
+- **Hyva storefronts** that need cache management that is completely frontend-agnostic and does not pull in any extra frontend dependencies.
+- **Site owners who want visibility** into which pages were crawled, how fast they responded, and whether any warmup requests failed.
+- **High-traffic stores** where keeping the FPC warm between content updates makes a measurable difference to page speed and Core Web Vitals.
 
 ---
 
 ## Key Features
 
 ### Smart Cache Invalidation
-
-- **Product save** — clears only the affected product's cache tags (not the entire FPC)
-- **Category save** — clears the specific category tags
-- **CMS save** — clears only the affected page/block tags
-- **Per-entity toggles** — enable or disable invalidation per entity type
+- **Product save** clears only the cache tags for that product, not the entire FPC.
+- **Category save** clears the tags for that specific category.
+- **CMS page or block save** clears only the affected CMS tags.
+- **Per-entity toggles** let you enable or disable invalidation for each entity type independently.
 
 ### Automated Cache Warmup
-
-- **Cron-driven** — runs on a configurable schedule (default every 6 hours)
-- **Concurrent requests** — uses PHP `curl_multi` to send N requests in parallel
-- **Configurable concurrency** — tune parallel batch size to your server capacity
-- **Selectable page types** — Home, Category pages, Product pages, CMS pages
-- **Store-aware** — respects Magento scope and base URL
+- **Cron-driven warmup** runs on a configurable schedule (default: every 6 hours).
+- **Concurrent requests** using PHP `curl_multi` so multiple pages are crawled in parallel.
+- **Configurable concurrency** lets you tune the parallel batch size to your server capacity.
+- **Selectable page types** covers home page, category pages, product pages, and CMS pages.
+- **Store-aware URL collection** respects Magento scope and base URL per store view.
 
 ### Warmup Log Grid
-
-- **Full admin grid** — every warmup request recorded
-- **HTTP status** — 200, 404, 500, etc.
-- **Response time (ms)** — diagnose slow pages at a glance
-- **Page type, URL, timestamp** — filter, sort, and export
+- **Full admin grid** under Panth Extensions -> Cache Manager -> Warmup Log.
+- **HTTP status code** per request (200, 404, 500, etc.) so failed pages are obvious.
+- **Response time in milliseconds** to spot slow pages before customers do.
+- **Page type, URL, and timestamp** columns with built-in filter and sort.
 
 ### Configurable Full Page Cache TTL
+- **Custom TTL per store view**, with a default of 86400 seconds (24 hours).
 
-- Custom TTL per store view
-- Default: 86400 seconds (24 hours)
-
-### Quality & Compatibility
-
-- **MEQP compliant** — passes Adobe's Magento Extension Quality Program
-- **Hyva and Luma compatible** — works with any frontend theme
-- **No core hacks** — pure observer and plugin architecture
-- **Composer-installable** — no manual file copying
-
----
-
-## How It Works
-
-### Smart Invalidation Flow
-
-```
-Admin saves product/category/CMS
-        ↓
-Observer catches save event
-        ↓
-Cache Manager computes affected tags
-        ↓
-Only those tags are cleaned
-        ↓
-Unrelated pages remain cached
-```
-
-### Warmup Flow
-
-```
-Cron triggers (default: every 6 hours)
-        ↓
-Collect URLs (home, categories, products, CMS)
-        ↓
-Split into batches of N (configurable concurrency)
-        ↓
-curl_multi sends batch in parallel
-        ↓
-Each response logged to panth_cache_warmup_log
-        ↓
-FPC is now primed for real visitors
-```
+### Quality
+- **MEQP-style code** with constructor dependency injection only, no ObjectManager.
+- **Observer and plugin architecture** with no core file edits.
+- **Full Page Cache friendly** because warmup and invalidation work at the tag level.
+- **Translation ready**: every label uses Magento's `__()` function.
 
 ---
 
@@ -175,16 +145,14 @@ FPC is now primed for real visitors
 |---|---|
 | Magento Open Source | 2.4.6, 2.4.7, 2.4.8 |
 | Adobe Commerce | 2.4.6, 2.4.7, 2.4.8 |
-| Adobe Commerce Cloud | 2.4.6 — 2.4.8 |
+| Adobe Commerce Cloud | 2.4.6 to 2.4.8 |
 | PHP | 8.1.x, 8.2.x, 8.3.x, 8.4.x |
 | MySQL | 8.0+ |
 | MariaDB | 10.4+ |
 | Hyva Theme | 1.0+ (fully supported) |
 | Luma Theme | Native support |
-| Required Dependency | `mage2kishan/module-core` ^1.0 |
+| Required Dependency | `mage2kishan/module-core` (free) |
 | PHP Extension | `ext-curl` |
-
-Tested on Magento 2.4.8-p4 (PHP 8.4), 2.4.7 (PHP 8.3), and 2.4.6 (PHP 8.2).
 
 ---
 
@@ -203,10 +171,10 @@ bin/magento cache:flush
 
 ### Manual Installation via ZIP
 
-1. Download the release ZIP from [Packagist](https://packagist.org/packages/mage2kishan/module-cachemanager) or [GitHub](https://github.com/mage2sk/module-cachemanager).
-2. Extract to `app/code/Panth/CacheManager/`.
-3. Ensure `Panth_Core` is also installed at `app/code/Panth/Core/`.
-4. Run the commands above from `bin/magento module:enable` onward.
+1. Download the latest release from [Packagist](https://packagist.org/packages/mage2kishan/module-cachemanager) or from the [product page](https://kishansavaliya.com/magento-2-cachemanager.html).
+2. Extract it to `app/code/Panth/CacheManager/` in your Magento install.
+3. Make sure `Panth_Core` is installed too (required dependency).
+4. Run the commands above starting from `bin/magento module:enable`.
 
 ### Verify Installation
 
@@ -215,52 +183,56 @@ bin/magento module:status Panth_CacheManager
 # Expected: Module is enabled
 ```
 
-Then visit:
+After install, open:
 ```
-Admin → Stores → Configuration → Panth Extensions → Cache Manager
+Admin -> Stores -> Configuration -> Panth Extensions -> Cache Manager
 ```
 
 ---
 
 ## Configuration
 
-All settings live at **Stores → Configuration → Panth Extensions → Cache Manager**.
+Go to **Stores -> Configuration -> Panth Extensions -> Cache Manager**.
 
-### General
+| Setting | Group | Default | Description |
+|---|---|---|---|
+| Enable Cache Manager | General Settings | Yes | Master toggle. When set to No, neither invalidation nor warmup runs. |
+| Cache TTL (seconds) | Full Page Cache | 86400 | Lifetime of cached pages in seconds. 86400 is 24 hours. |
+| Enable Cache Warmup | Cache Warmup | Yes | Turn the automated warmup cron on or off. |
+| Warmup Schedule (Cron) | Cache Warmup | `0 */6 * * *` | Cron expression for the warmup job. Default runs every 6 hours. |
+| Pages to Warm Up | Cache Warmup | All | Multi-select: Home, Category, Product, CMS pages. |
+| Concurrent Requests | Cache Warmup | 5 | Number of parallel `curl_multi` requests per warmup batch. |
+| Enable Smart Invalidation | Cache Invalidation | Yes | Master toggle for selective cache tag clearing. |
+| Invalidate on Product Save | Cache Invalidation | Yes | Clear product cache tags when a product is saved. |
+| Invalidate on Category Save | Cache Invalidation | Yes | Clear category cache tags when a category is saved. |
+| Invalidate on CMS Save | Cache Invalidation | Yes | Clear CMS tags when a CMS page or block is saved. |
 
-| Setting | Default | Description |
-|---|---|---|
-| Enable Cache Manager | Yes | Master toggle. When No, neither invalidation nor warmup runs. |
+---
 
-### Full Page Cache
+## How It Works
 
-| Setting | Default | Description |
-|---|---|---|
-| Cache TTL (seconds) | 86400 | Lifetime of cached pages. 24 hours by default. |
+### Smart Invalidation
 
-### Cache Warmup
+1. A merchant saves a product, category, or CMS page in the admin.
+2. A Magento observer catches the save event.
+3. Cache Manager calculates the cache tags that belong to that specific entity.
+4. Only those tags are cleaned from the full-page cache.
+5. All other cached pages stay hot for real visitors.
 
-| Setting | Default | Description |
-|---|---|---|
-| Enable Cache Warmup | Yes | Turn automatic warmup on/off. |
-| Warmup Schedule | `0 */6 * * *` | Cron expression — every 6 hours by default. |
-| Pages to Warm Up | All | Multi-select: Home, Category, Product, CMS pages. |
-| Concurrent Requests | 5 | Parallel `curl_multi` requests per batch. |
+### Automated Warmup
 
-### Cache Invalidation
-
-| Setting | Default | Description |
-|---|---|---|
-| Enable Smart Invalidation | Yes | Master toggle for selective cache cleaning. |
-| Invalidate on Product Save | Yes | Clean product cache tags on product save. |
-| Invalidate on Category Save | Yes | Clean category cache tags on category save. |
-| Invalidate on CMS Save | Yes | Clean CMS tags on page or block save. |
+1. The Magento cron triggers the warmup job on the configured schedule.
+2. Cache Manager collects URLs for the selected page types (home, categories, products, CMS) per store view.
+3. URLs are split into batches based on the configured concurrency setting.
+4. `curl_multi` sends each batch of requests in parallel.
+5. Every response is written to the `panth_cache_warmup_log` table with HTTP status and response time.
+6. The FPC is now primed, so the next real visitor hits a warm page.
 
 ---
 
 ## Warmup Log
 
-Navigate to **Panth Extensions → Cache Manager → Warmup Log** in the admin sidebar.
+Open **Admin -> Panth Extensions -> Cache Manager -> Warmup Log**.
 
 The grid shows:
 
@@ -268,70 +240,47 @@ The grid shows:
 |---|---|
 | ID | Auto-increment log ID |
 | URL | The page that was warmed |
-| Page Type | home, category, product, cms |
+| Page Type | home, category, product, or cms |
 | HTTP Status | 200, 404, 500, etc. |
-| Status | success or failed |
-| Response Time (ms) | Request duration |
-| Warmed At | Timestamp |
+| Status | success, failed, pending, or skipped |
+| Response Time (ms) | Request duration in milliseconds |
+| Warmed At | Timestamp of when the request was made |
 
-Use built-in filters and sorting to find slow pages, failed requests, or audit warmup frequency.
-
----
-
-## Troubleshooting
-
-| Issue | Cause | Resolution |
-|---|---|---|
-| Warmup cron never runs | Magento cron not configured | Verify `bin/magento cron:run` is scheduled in system crontab |
-| All warmup requests fail | Server cannot reach its own URL | Check firewall, SSL, and base URL reachability from the server |
-| Smart invalidation has no effect | Master or per-entity toggle off | Set both `Enable Smart Invalidation` and the entity toggle to Yes |
-| No URLs collected | No page types selected | Pick at least one page type in `Pages to Warm Up` |
-| Warmup too slow | Concurrency too low | Raise `Concurrent Requests` (test gradually — 5, 10, 20) |
-| Warmup overloads server | Concurrency too high | Lower `Concurrent Requests` and/or schedule off-peak |
+Use the built-in column filters and sorting to find slow pages, failed requests, or check how often your warmup is running.
 
 ---
 
 ## FAQ
 
 ### Does Cache Manager work with Varnish?
+Yes. Smart invalidation cleans Magento cache tags. Varnish honors these through the standard Magento Varnish integration. Warmup sends regular HTTP GET requests that Varnish caches like any other visitor would prime.
 
-Yes. Smart invalidation cleans Magento cache tags which Varnish honors via the standard Magento Varnish integration. Warmup simply issues HTTP GET requests, which Varnish caches like any other visitor.
+### Does it work with Hyva themes?
+Yes. Cache Manager operates at the cache and observer layer, not the frontend, so it works with Hyva, Luma, or any other Magento 2 theme.
 
-### Does it work with Hyva?
+### Will the warmup crawl show up in my analytics?
+Warmup sends HTTP GET requests from the server itself. If you want to exclude these from analytics, filter by IP address or User-Agent in your analytics tool.
 
-Yes. Cache Manager operates at the cache layer, not the frontend, so it is theme-agnostic. It fully supports Hyva and Luma.
-
-### Will warmup hit my analytics?
-
-Warmup sends ordinary HTTP GET requests from the server. If you want to exclude warmup traffic, filter by User-Agent or IP in your analytics tool. You can customize the User-Agent via a plugin on the warmup service if needed.
-
-### How much server load does warmup add?
-
-Warmup runs on cron, not on every request. Typical concurrency of 5 parallel requests every 6 hours is negligible. Tune `Concurrent Requests` for your infrastructure.
+### How much extra server load does the warmup add?
+Very little. The default setting runs 5 concurrent requests every 6 hours. You can raise or lower the `Concurrent Requests` value to match your server capacity.
 
 ### Does it flush the full cache?
+No. That is the main point of smart invalidation. Only the cache tags for the specific entity you saved are cleared. Unrelated pages stay cached.
 
-No. That is the point. Cache Manager invalidates only the tags for the saved entity. Unrelated pages remain cached.
+### Can I warm custom page URLs?
+The default warmup covers home, categories, products, and CMS. Custom URL providers can be added by extending the URL collector service through Magento DI.
 
-### Can I warm custom URLs?
-
-The default warmup covers home, categories, products, and CMS. Custom URL providers can be added via DI by extending the URL collector service.
-
-### Does this replace Magento's default FPC?
-
-No. Cache Manager sits on top of Magento's Full Page Cache — it invalidates smarter and keeps it warm.
+### Does this replace Magento's built-in Full Page Cache?
+No. Cache Manager sits on top of Magento's FPC. It invalidates more precisely and keeps the cache warm, but it uses the same underlying Magento FPC mechanism.
 
 ### Is the warmup log pruned automatically?
-
-The log grows with every warmup cycle. For large stores, consider adding a periodic cleanup cron (roadmap) or truncate `panth_cache_warmup_log` manually as needed.
+Not in the current version. The `panth_cache_warmup_log` table grows with every warmup cycle. For busy stores, truncate it periodically as needed.
 
 ### Does it require Panth Core?
-
-Yes. `mage2kishan/module-core` is a free, required dependency and is pulled in automatically by Composer.
+Yes. `mage2kishan/module-core` is a free required dependency. Composer installs it for you automatically when you require this module.
 
 ### Is multi-store supported?
-
-Yes. All settings respect Magento's scope hierarchy (default → website → store view), and warmup collects URLs per store view.
+Yes. All settings respect Magento's scope hierarchy (default, website, store view), and the warmup collects URLs per store view based on its configured base URL.
 
 ---
 
@@ -339,6 +288,7 @@ Yes. All settings respect Magento's scope hierarchy (default → website → sto
 
 | Channel | Contact |
 |---|---|
+| Product Page | [kishansavaliya.com/magento-2-cachemanager.html](https://kishansavaliya.com/magento-2-cachemanager.html) |
 | Email | kishansavaliyakb@gmail.com |
 | Website | [kishansavaliya.com](https://kishansavaliya.com) |
 | WhatsApp | +91 84012 70422 |
@@ -348,9 +298,9 @@ Yes. All settings respect Magento's scope hierarchy (default → website → sto
 
 Response time: 1-2 business days.
 
-### 💼 Need Custom Magento Development?
+### Need Custom Magento Development?
 
-Looking for **custom Magento module development**, **Hyva theme customization**, **store migrations**, or **performance optimization**? Get a free quote in 24 hours:
+Looking for **custom Magento module development**, **Hyva theme work**, **store migrations**, or **performance tuning**? Get a free quote in 24 hours:
 
 <p align="center">
   <a href="https://kishansavaliya.com/get-quote">
@@ -367,48 +317,46 @@ Looking for **custom Magento module development**, **Hyva theme customization**,
     <img src="https://img.shields.io/badge/Visit-Panth%20Infotech%20Agency-14a800?style=for-the-badge&logo=upwork&logoColor=white" alt="Visit Agency" />
   </a>
   &nbsp;&nbsp;
-  <a href="https://kishansavaliya.com">
-    <img src="https://img.shields.io/badge/Visit%20Website-kishansavaliya.com-0D9488?style=for-the-badge" alt="Visit Website" />
+  <a href="https://kishansavaliya.com/magento-2-cachemanager.html">
+    <img src="https://img.shields.io/badge/View%20Product%20Page-magento--2--cachemanager-0D9488?style=for-the-badge" alt="View Product Page" />
   </a>
 </p>
-
----
-
-## License
-
-Proprietary — see `LICENSE.txt`. Copyright © Panth Infotech. All rights reserved.
 
 ---
 
 ## About Panth Infotech
 
-Built and maintained by **Kishan Savaliya** — [kishansavaliya.com](https://kishansavaliya.com) — a **Top Rated Plus** Magento developer on Upwork with 10+ years of eCommerce experience.
+Built and maintained by **Kishan Savaliya** ([kishansavaliya.com](https://kishansavaliya.com)), a **Top Rated Plus** Magento developer on Upwork with 10+ years of eCommerce experience.
 
-**Panth Infotech** is a Magento 2 development agency specializing in high-quality, security-focused extensions and themes for both Hyva and Luma storefronts. Our extension suite covers SEO, performance, caching, checkout, product presentation, customer engagement, and store management — over 34 modules built to MEQP standards and tested across Magento 2.4.4 to 2.4.8.
+**Panth Infotech** is a Magento 2 development agency that builds high quality, security focused extensions and themes for both Hyva and Luma storefronts. The extension suite covers SEO, performance, caching, checkout, product presentation, customer engagement, and store management, with each module built to MEQP standards and tested across Magento 2.4.6 to 2.4.8.
 
-Browse the full extension catalog on the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com) or [Packagist](https://packagist.org/packages/mage2kishan/).
+Browse the full extension catalog on our [Magento extensions page](https://kishansavaliya.com/magento-extensions.html) or on [Packagist](https://packagist.org/packages/mage2kishan/).
 
-### Quick Links
+---
 
-- 🌐 **Website:** [kishansavaliya.com](https://kishansavaliya.com)
-- 💬 **Get a Quote:** [kishansavaliya.com/get-quote](https://kishansavaliya.com/get-quote)
-- 👨‍💻 **Upwork Profile (Top Rated Plus):** [upwork.com/freelancers/~016dd1767321100e21](https://www.upwork.com/freelancers/~016dd1767321100e21)
-- 🏢 **Upwork Agency:** [upwork.com/agencies/1881421506131960778](https://www.upwork.com/agencies/1881421506131960778/)
-- 📦 **Packagist:** [packagist.org/packages/mage2kishan/module-cachemanager](https://packagist.org/packages/mage2kishan/module-cachemanager)
-- 🐙 **GitHub:** [github.com/mage2sk/module-cachemanager](https://github.com/mage2sk/module-cachemanager)
-- 🛒 **Adobe Marketplace:** [commercemarketplace.adobe.com](https://commercemarketplace.adobe.com)
-- 📧 **Email:** kishansavaliyakb@gmail.com
-- 📱 **WhatsApp:** +91 84012 70422
+## Quick Links
+
+| Resource | Link |
+|---|---|
+| **Product Page** | [magento-2-cachemanager.html](https://kishansavaliya.com/magento-2-cachemanager.html) |
+| **Packagist** | [mage2kishan/module-cachemanager](https://packagist.org/packages/mage2kishan/module-cachemanager) |
+| **GitHub** | [mage2sk/module-cachemanager](https://github.com/mage2sk/module-cachemanager) |
+| **Website** | [kishansavaliya.com](https://kishansavaliya.com) |
+| **Free Quote** | [kishansavaliya.com/get-quote](https://kishansavaliya.com/get-quote) |
+| **Upwork (Top Rated Plus)** | [Hire Kishan Savaliya](https://www.upwork.com/freelancers/~016dd1767321100e21) |
+| **Upwork Agency** | [Panth Infotech](https://www.upwork.com/agencies/1881421506131960778/) |
+| **Email** | kishansavaliyakb@gmail.com |
+| **WhatsApp** | +91 84012 70422 |
 
 ---
 
 <p align="center">
-  <strong>Ready to speed up your Magento 2 store?</strong><br/>
-  <a href="https://kishansavaliya.com/get-quote">
-    <img src="https://img.shields.io/badge/%F0%9F%9A%80%20Get%20Started%20%E2%86%92-Free%20Quote%20in%2024h-DC2626?style=for-the-badge" alt="Get Started" />
+  <strong>Ready to keep your Magento 2 store fast without flushing the whole cache?</strong><br/>
+  <a href="https://kishansavaliya.com/magento-2-cachemanager.html">
+    <img src="https://img.shields.io/badge/%F0%9F%9A%80%20See%20Cache%20Manager%20%E2%86%92-Product%20Page%20%26%20Details-DC2626?style=for-the-badge" alt="See Cache Manager" />
   </a>
 </p>
 
 ---
 
-**SEO Keywords:** magento 2 cache manager, magento 2 cache warmup, magento 2 smart cache invalidation, magento 2 full page cache, magento 2 FPC warmup, magento 2 curl_multi warmup, magento 2 concurrent cache warmup, magento 2 cron cache warmup, magento 2 warmup log, hyva cache warmup, magento 2 cache tags invalidation, magento 2 product save cache, magento 2 category save cache, magento 2 CMS save cache, magento 2 TTL configuration, magento 2 performance optimization, magento 2 core web vitals, magento 2 TTFB optimization, panth cache manager, panth infotech, mage2kishan, mage2sk, magento 2.4.8 cache module, magento 2.4.7 cache warmup, PHP 8.4 magento cache, hire magento developer upwork, top rated plus magento freelancer, kishan savaliya magento, custom magento development, magento 2 hyva development, magento 2 luma customization, magento 2 SEO services, M1 to M2 migration, adobe commerce cloud expert, magento 2 checkout optimization, magento 2 varnish integration
+**SEO Keywords:** magento 2 cache manager, magento 2 cache warmup, magento 2 smart cache invalidation, magento 2 full page cache, magento 2 FPC warmup, magento 2 curl_multi warmup, magento 2 concurrent cache warmup, magento 2 cron cache warmup, magento 2 warmup log, hyva cache warmup, magento 2 cache tags invalidation, magento 2 product save cache, magento 2 category save cache, magento 2 CMS save cache, magento 2 cache TTL, magento 2 performance optimization, magento 2 core web vitals, magento 2 TTFB improvement, panth cache manager, panth infotech, mage2kishan, magento 2.4.8 cache module, magento 2.4.7 cache warmup, PHP 8.4 magento cache, hire magento developer upwork, top rated plus magento developer, kishan savaliya magento, custom magento development, magento 2 hyva development, magento 2 luma cache, magento 2 varnish integration, magento 2 full page cache extension

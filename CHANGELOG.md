@@ -2,6 +2,11 @@
 
 All notable changes to the Panth Cache Manager module will be documented in this file.
 
+## [1.0.4] - 2026-06-18
+
+### Changed
+- Rewrote README to match standard Panth Infotech template with Quick Answer, Who Is It For, Configuration table from system.xml, Warmup Log section, FAQ, Support table with product page link, and Quick Links table.
+
 ## [1.0.0] - 2026-04-13
 
 ### Added
