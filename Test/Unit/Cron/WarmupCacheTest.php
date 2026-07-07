@@ -1,7 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- */
 declare(strict_types=1);
 
 namespace Panth\CacheManager\Test\Unit\Cron;
@@ -19,49 +16,22 @@ use PHPUnit\Framework\MockObject\MockObject;
 
 class WarmupCacheTest extends TestCase
 {
-    /**
-     * @var WarmupCache
-     */
     private WarmupCache $cron;
 
-    /**
-     * @var ConfigHelper|MockObject
-     */
     private $configHelperMock;
 
-    /**
-     * @var StoreManagerInterface|MockObject
-     */
     private $storeManagerMock;
 
-    /**
-     * @var CategoryCollectionFactory|MockObject
-     */
     private $categoryCollectionFactoryMock;
 
-    /**
-     * @var ProductCollectionFactory|MockObject
-     */
     private $productCollectionFactoryMock;
 
-    /**
-     * @var CmsPageCollectionFactory|MockObject
-     */
     private $cmsPageCollectionFactoryMock;
 
-    /**
-     * @var LoggerInterface|MockObject
-     */
     private $loggerMock;
 
-    /**
-     * @var Store|MockObject
-     */
     private $storeMock;
 
-    /**
-     * Set up test fixtures
-     */
     protected function setUp(): void
     {
         $this->configHelperMock = $this->createMock(ConfigHelper::class);
@@ -82,11 +52,6 @@ class WarmupCacheTest extends TestCase
         );
     }
 
-    /**
-     * Test execute returns early when warmup is disabled
-     *
-     * @test
-     */
     public function testExecuteReturnEarlyWhenWarmupDisabled(): void
     {
         $this->configHelperMock->expects($this->once())
@@ -99,11 +64,6 @@ class WarmupCacheTest extends TestCase
         $this->cron->execute();
     }
 
-    /**
-     * Test execute logs info when no URLs to warm
-     *
-     * @test
-     */
     public function testExecuteLogsInfoWhenNoUrls(): void
     {
         $this->configHelperMock->method('isWarmupEnabled')->willReturn(true);
@@ -119,11 +79,6 @@ class WarmupCacheTest extends TestCase
         $this->cron->execute();
     }
 
-    /**
-     * Test execute handles general exception during warmup
-     *
-     * @test
-     */
     public function testExecuteHandlesGeneralExceptionDuringWarmup(): void
     {
         $this->configHelperMock->expects($this->once())

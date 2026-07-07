@@ -1,7 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- */
 declare(strict_types=1);
 
 namespace Panth\CacheManager\Test\Unit\Helper;
@@ -15,24 +12,12 @@ use PHPUnit\Framework\MockObject\MockObject;
 
 class DataTest extends TestCase
 {
-    /**
-     * @var Data
-     */
     private Data $helper;
 
-    /**
-     * @var ScopeConfigInterface|MockObject
-     */
     private $scopeConfigMock;
 
-    /**
-     * @var Context|MockObject
-     */
     private $contextMock;
 
-    /**
-     * Set up test fixtures
-     */
     protected function setUp(): void
     {
         $this->scopeConfigMock = $this->createMock(ScopeConfigInterface::class);
@@ -44,9 +29,6 @@ class DataTest extends TestCase
         $this->helper = new Data($this->contextMock);
     }
 
-    /**
-     * @test
-     */
     public function testIsEnabledReturnsTrueWhenConfigured(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -57,9 +39,6 @@ class DataTest extends TestCase
         $this->assertTrue($this->helper->isEnabled());
     }
 
-    /**
-     * @test
-     */
     public function testIsEnabledReturnsFalseWhenNotConfigured(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -70,9 +49,6 @@ class DataTest extends TestCase
         $this->assertFalse($this->helper->isEnabled());
     }
 
-    /**
-     * @test
-     */
     public function testIsEnabledWithStoreId(): void
     {
         $storeId = 2;
@@ -84,9 +60,6 @@ class DataTest extends TestCase
         $this->assertTrue($this->helper->isEnabled($storeId));
     }
 
-    /**
-     * @test
-     */
     public function testGetCacheTtlReturnsConfiguredValue(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -97,9 +70,6 @@ class DataTest extends TestCase
         $this->assertEquals(3600, $this->helper->getCacheTtl());
     }
 
-    /**
-     * @test
-     */
     public function testGetCacheTtlReturnsDefaultValue(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -110,9 +80,6 @@ class DataTest extends TestCase
         $this->assertEquals(86400, $this->helper->getCacheTtl());
     }
 
-    /**
-     * @test
-     */
     public function testIsWarmupEnabledReturnsTrueWhenBothEnabled(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -124,9 +91,6 @@ class DataTest extends TestCase
         $this->assertTrue($this->helper->isWarmupEnabled());
     }
 
-    /**
-     * @test
-     */
     public function testIsWarmupEnabledReturnsFalseWhenGeneralDisabled(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -137,9 +101,6 @@ class DataTest extends TestCase
         $this->assertFalse($this->helper->isWarmupEnabled());
     }
 
-    /**
-     * @test
-     */
     public function testGetWarmupPagesReturnsArrayOfPages(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -152,9 +113,6 @@ class DataTest extends TestCase
         $this->assertContains('home', $result);
     }
 
-    /**
-     * @test
-     */
     public function testGetWarmupPagesReturnsEmptyArrayWhenNotConfigured(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -165,9 +123,6 @@ class DataTest extends TestCase
         $this->assertEmpty($this->helper->getWarmupPages());
     }
 
-    /**
-     * @test
-     */
     public function testGetConcurrentRequestsReturnsConfiguredValue(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -178,9 +133,6 @@ class DataTest extends TestCase
         $this->assertEquals(10, $this->helper->getConcurrentRequests());
     }
 
-    /**
-     * @test
-     */
     public function testGetConcurrentRequestsReturnsDefaultValue(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -191,9 +143,6 @@ class DataTest extends TestCase
         $this->assertEquals(5, $this->helper->getConcurrentRequests());
     }
 
-    /**
-     * @test
-     */
     public function testGetWarmupScheduleReturnsConfiguredValue(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -204,9 +153,6 @@ class DataTest extends TestCase
         $this->assertEquals('0 2 * * *', $this->helper->getWarmupSchedule());
     }
 
-    /**
-     * @test
-     */
     public function testGetWarmupScheduleReturnsDefaultValue(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -217,9 +163,6 @@ class DataTest extends TestCase
         $this->assertEquals('0 */6 * * *', $this->helper->getWarmupSchedule());
     }
 
-    /**
-     * @test
-     */
     public function testIsSmartInvalidationEnabledRequiresModuleEnabled(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -231,9 +174,6 @@ class DataTest extends TestCase
         $this->assertTrue($this->helper->isSmartInvalidationEnabled());
     }
 
-    /**
-     * @test
-     */
     public function testIsSmartInvalidationDisabledWhenModuleDisabled(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -244,9 +184,6 @@ class DataTest extends TestCase
         $this->assertFalse($this->helper->isSmartInvalidationEnabled());
     }
 
-    /**
-     * @test
-     */
     public function testShouldInvalidateOnProductSave(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -257,9 +194,6 @@ class DataTest extends TestCase
         $this->assertTrue($this->helper->shouldInvalidateOnProductSave());
     }
 
-    /**
-     * @test
-     */
     public function testShouldInvalidateOnCategorySave(): void
     {
         $this->scopeConfigMock->method('getValue')
@@ -270,9 +204,6 @@ class DataTest extends TestCase
         $this->assertTrue($this->helper->shouldInvalidateOnCategorySave());
     }
 
-    /**
-     * @test
-     */
     public function testShouldInvalidateOnCmsSave(): void
     {
         $this->scopeConfigMock->method('getValue')

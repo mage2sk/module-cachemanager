@@ -1,7 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- */
 declare(strict_types=1);
 
 namespace Panth\CacheManager\Observer;
@@ -14,24 +11,12 @@ use Psr\Log\LoggerInterface;
 
 class CacheInvalidate implements ObserverInterface
 {
-    /**
-     * @var ConfigHelper
-     */
     private ConfigHelper $configHelper;
 
-    /**
-     * @var CacheInterface
-     */
     private CacheInterface $cache;
 
-    /**
-     * @var LoggerInterface
-     */
     private LoggerInterface $logger;
 
-    /**
-     * Map of event names to cache tags and config check methods
-     */
     private const EVENT_CONFIG = [
         'catalog_product_save_after' => [
             'tags' => ['catalog_product'],
@@ -51,11 +36,6 @@ class CacheInvalidate implements ObserverInterface
         ]
     ];
 
-    /**
-     * @param ConfigHelper $configHelper
-     * @param CacheInterface $cache
-     * @param LoggerInterface $logger
-     */
     public function __construct(
         ConfigHelper $configHelper,
         CacheInterface $cache,
@@ -66,12 +46,6 @@ class CacheInvalidate implements ObserverInterface
         $this->logger = $logger;
     }
 
-    /**
-     * Smart cache invalidation based on entity changes
-     *
-     * @param Observer $observer
-     * @return void
-     */
     public function execute(Observer $observer): void
     {
         if (!$this->configHelper->isEnabled() || !$this->configHelper->isSmartInvalidationEnabled()) {
@@ -88,7 +62,6 @@ class CacheInvalidate implements ObserverInterface
             $eventConfig = self::EVENT_CONFIG[$eventName];
             $configMethod = $eventConfig['config_method'];
 
-            // Check per-entity toggle (e.g., shouldInvalidateOnProductSave)
             if (!$this->configHelper->$configMethod()) {
                 return;
             }

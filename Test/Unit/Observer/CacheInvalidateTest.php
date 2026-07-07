@@ -1,7 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- */
 declare(strict_types=1);
 
 namespace Panth\CacheManager\Test\Unit\Observer;
@@ -17,39 +14,18 @@ use PHPUnit\Framework\MockObject\MockObject;
 
 class CacheInvalidateTest extends TestCase
 {
-    /**
-     * @var CacheInvalidate
-     */
     private CacheInvalidate $observer;
 
-    /**
-     * @var ConfigHelper|MockObject
-     */
     private $configHelperMock;
 
-    /**
-     * @var CacheInterface|MockObject
-     */
     private $cacheMock;
 
-    /**
-     * @var LoggerInterface|MockObject
-     */
     private $loggerMock;
 
-    /**
-     * @var Observer|MockObject
-     */
     private $observerMock;
 
-    /**
-     * @var Event|MockObject
-     */
     private $eventMock;
 
-    /**
-     * Set up test fixtures
-     */
     protected function setUp(): void
     {
         $this->configHelperMock = $this->createMock(ConfigHelper::class);
@@ -65,11 +41,6 @@ class CacheInvalidateTest extends TestCase
         );
     }
 
-    /**
-     * Test execute returns early when module is disabled
-     *
-     * @test
-     */
     public function testExecuteReturnEarlyWhenModuleDisabled(): void
     {
         $this->configHelperMock->expects($this->once())
@@ -85,11 +56,6 @@ class CacheInvalidateTest extends TestCase
         $this->observer->execute($this->observerMock);
     }
 
-    /**
-     * Test execute returns early when smart invalidation is disabled
-     *
-     * @test
-     */
     public function testExecuteReturnEarlyWhenSmartInvalidationDisabled(): void
     {
         $this->configHelperMock->expects($this->once())
@@ -109,11 +75,6 @@ class CacheInvalidateTest extends TestCase
         $this->observer->execute($this->observerMock);
     }
 
-    /**
-     * Test execute invalidates product cache when product save config is enabled
-     *
-     * @test
-     */
     public function testExecuteInvalidatesProductCacheOnProductSave(): void
     {
         $eventName = 'catalog_product_save_after';
@@ -142,11 +103,6 @@ class CacheInvalidateTest extends TestCase
         $this->observer->execute($this->observerMock);
     }
 
-    /**
-     * Test execute skips invalidation when per-entity toggle is off
-     *
-     * @test
-     */
     public function testExecuteSkipsWhenEntityToggleIsOff(): void
     {
         $this->configHelperMock->method('isEnabled')->willReturn(true);
@@ -164,11 +120,6 @@ class CacheInvalidateTest extends TestCase
         $this->observer->execute($this->observerMock);
     }
 
-    /**
-     * Test execute invalidates category cache on category save
-     *
-     * @test
-     */
     public function testExecuteInvalidatesCategoryCacheOnCategorySave(): void
     {
         $this->configHelperMock->method('isEnabled')->willReturn(true);
@@ -187,11 +138,6 @@ class CacheInvalidateTest extends TestCase
         $this->observer->execute($this->observerMock);
     }
 
-    /**
-     * Test execute invalidates CMS cache on CMS page save
-     *
-     * @test
-     */
     public function testExecuteInvalidatesCmsCacheOnCmsPageSave(): void
     {
         $this->configHelperMock->method('isEnabled')->willReturn(true);
@@ -210,11 +156,6 @@ class CacheInvalidateTest extends TestCase
         $this->observer->execute($this->observerMock);
     }
 
-    /**
-     * Test execute invalidates CMS cache on CMS block save
-     *
-     * @test
-     */
     public function testExecuteInvalidatesCmsCacheOnCmsBlockSave(): void
     {
         $this->configHelperMock->method('isEnabled')->willReturn(true);
@@ -233,11 +174,6 @@ class CacheInvalidateTest extends TestCase
         $this->observer->execute($this->observerMock);
     }
 
-    /**
-     * Test execute does not clean cache for unknown events
-     *
-     * @test
-     */
     public function testExecuteDoesNotCleanCacheForUnknownEvents(): void
     {
         $this->configHelperMock->method('isEnabled')->willReturn(true);
@@ -252,11 +188,6 @@ class CacheInvalidateTest extends TestCase
         $this->observer->execute($this->observerMock);
     }
 
-    /**
-     * Test execute handles exception gracefully
-     *
-     * @test
-     */
     public function testExecuteHandlesExceptionGracefully(): void
     {
         $this->configHelperMock->method('isEnabled')->willReturn(true);

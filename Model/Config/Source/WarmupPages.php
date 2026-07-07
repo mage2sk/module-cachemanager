@@ -1,7 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- */
 declare(strict_types=1);
 
 namespace Panth\CacheManager\Model\Config\Source;
@@ -11,11 +8,6 @@ use Magento\Framework\Phrase;
 
 class WarmupPages implements OptionSourceInterface
 {
-    /**
-     * Get options as array for multiselect
-     *
-     * @return array
-     */
     public function toOptionArray(): array
     {
         return [
@@ -26,11 +18,6 @@ class WarmupPages implements OptionSourceInterface
         ];
     }
 
-    /**
-     * Get options as key-value array
-     *
-     * @return array<string, Phrase>
-     */
     public function toArray(): array
     {
         return [

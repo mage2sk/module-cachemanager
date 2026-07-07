@@ -1,7 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- */
 declare(strict_types=1);
 
 namespace Panth\CacheManager\Console\Command;
@@ -14,15 +11,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * `bin/magento panth:cachemanager:warmup` — synchronous warmup pass.
- *
- * Mirrors what the cron does, but prints each URL's HTTP status + response
- * time as it lands so the operator can verify the configured page list and
- * concurrency before relying on the scheduled run. Bypasses the
- * `panth_cachemanager/warmup/enabled` toggle on purpose: a CLI invocation
- * is an explicit action.
- */
 class WarmupCommand extends Command
 {
     private const NAME = 'panth:cachemanager:warmup';
@@ -51,7 +39,6 @@ class WarmupCommand extends Command
         try {
             $this->appState->setAreaCode('frontend');
         } catch (\Throwable) {
-            // Already set — fine.
         }
 
         $output->writeln('<info>Starting cache warmup...</info>');

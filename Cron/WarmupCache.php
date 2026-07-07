@@ -1,7 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- */
 declare(strict_types=1);
 
 namespace Panth\CacheManager\Cron;
@@ -17,34 +14,16 @@ use Psr\Log\LoggerInterface;
 
 class WarmupCache
 {
-    /**
-     * @var ConfigHelper
-     */
     private ConfigHelper $configHelper;
 
-    /**
-     * @var StoreManagerInterface
-     */
     private StoreManagerInterface $storeManager;
 
-    /**
-     * @var CategoryCollectionFactory
-     */
     private CategoryCollectionFactory $categoryCollectionFactory;
 
-    /**
-     * @var ProductCollectionFactory
-     */
     private ProductCollectionFactory $productCollectionFactory;
 
-    /**
-     * @var CmsPageCollectionFactory
-     */
     private CmsPageCollectionFactory $cmsPageCollectionFactory;
 
-    /**
-     * @var LoggerInterface
-     */
     private LoggerInterface $logger;
     private WarmupLogFactory $warmupLogFactory;
     private WarmupLogResource $warmupLogResource;
@@ -69,12 +48,6 @@ class WarmupCache
         $this->warmupLogResource = $warmupLogResource;
     }
 
-    /**
-     * Execute cache warmup via cron. Honors the warmup-enabled toggle and
-     * swallows exceptions so a single failure can't break the cron group.
-     *
-     * @return void
-     */
     public function execute(): void
     {
         if (!$this->configHelper->isWarmupEnabled()) {
@@ -88,21 +61,6 @@ class WarmupCache
         }
     }
 
-    /**
-     * Run a warmup pass synchronously and return per-URL results. Shared by
-     * the cron and the `panth:cachemanager:warmup` CLI command. Bypasses
-     * the warmup-enabled toggle on purpose — a CLI invocation is an explicit
-     * action and shouldn't be silently skipped because the cron is off.
-     *
-     * Each result row is shaped:
-     *   ['url' => string, 'page_type' => string, 'status' => 'success'|'failed',
-     *    'http_code' => int, 'response_time_ms' => float, 'error' => string]
-     *
-     * @param callable|null $onResult Optional callback fired per URL as the
-     *                                response arrives — useful for live CLI
-     *                                progress reporting.
-     * @return array<int, array<string, mixed>>
-     */
     public function runWarmup(?callable $onResult = null): array
     {
         $urls = $this->collectUrls();
@@ -125,11 +83,6 @@ class WarmupCache
         return $results;
     }
 
-    /**
-     * Collect all URLs to warm up based on configured page types
-     *
-     * @return array
-     */
     private function collectUrls(): array
     {
         $pageTypes = $this->configHelper->getWarmupPages();
@@ -157,11 +110,6 @@ class WarmupCache
         return array_unique($urls);
     }
 
-    /**
-     * Get all active category URLs
-     *
-     * @return array
-     */
     private function getCategoryUrls(): array
     {
         $urls = [];
@@ -189,11 +137,6 @@ class WarmupCache
         return $urls;
     }
 
-    /**
-     * Get all visible product URLs
-     *
-     * @return array
-     */
     private function getProductUrls(): array
     {
         $urls = [];
@@ -227,11 +170,6 @@ class WarmupCache
         return $urls;
     }
 
-    /**
-     * Get all active CMS page URLs
-     *
-     * @return array
-     */
     private function getCmsPageUrls(): array
     {
         $urls = [];
@@ -257,16 +195,6 @@ class WarmupCache
         return $urls;
     }
 
-    /**
-     * Warm up URLs using curl_multi for concurrent requests.
-     *
-     * @param array $urls
-     * @param int $concurrentRequests
-     * @param callable|null $onResult Optional per-URL callback — receives the
-     *                                same row that's added to the return value,
-     *                                so a CLI consumer can stream progress.
-     * @return array<int, array<string, mixed>>
-     */
     private function warmUpUrls(array $urls, int $concurrentRequests, ?callable $onResult = null): array
     {
         $chunks = array_chunk($urls, $concurrentRequests);
@@ -329,7 +257,6 @@ class WarmupCache
                     ]);
                     $this->warmupLogResource->save($log);
                 } catch (\Exception) {
-                    // Silent — don't break warmup if logging fails
                 }
 
                 if ($onResult !== null) {
@@ -345,9 +272,6 @@ class WarmupCache
         return $results;
     }
 
-    /**
-     * Guess page type from URL path
-     */
     private function guessPageType(string $url): string
     {
         $path = parse_url($url, PHP_URL_PATH) ?? '/';

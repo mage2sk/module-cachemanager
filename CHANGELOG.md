@@ -2,6 +2,11 @@
 
 All notable changes to the Panth Cache Manager module will be documented in this file.
 
+## [1.0.5]
+
+### Changed
+- Code cleanup: removed redundant inline comments and docblocks from the PHP source. No functional changes.
+
 ## [1.0.4] - 2026-06-18
 
 ### Changed
