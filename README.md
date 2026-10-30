@@ -161,7 +161,7 @@ The table `panth_cache_warmup_log` and the configuration values stored under `pa
 
 ## License
 
-Commercial software license. See [LICENSE.txt](LICENSE.txt) in this repository.
+Free and open source under the MIT License. See [LICENSE.txt](LICENSE.txt).
 
 ## Changelog
 
